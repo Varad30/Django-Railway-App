@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% block content %}
+    {% load mathfilters %}
+    <table>
+        <thead>
+        <tr>
+            <th>Train No</th>
+            <th>Train Name</th>
+            <th>Station Name</th>
+            <th>Arrival time</th>
+            <th>Departure Time</th>
+            <th>Destination Station</th>
+            <th>distance</th>
+            <th>price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if my_data %} 
+        {% for i in my_data %}
+        <tr>
+            <td>{{i.train_No}}</td>
+            <td>{{i.train_name}}</td>
+            <td>{{i.station_name}}</td>
+            <td>{{i.arrival_time}}</td>
+            <td>{{i.departure_time}}</td>
+            <td>{{i.destination_station_name}}</td>
+            <td>{{i.distance}}</td>
+            <td>{{i.distance|mul:10}}</td>
+            {% comment %} <td>{{i.distance*10}}</td> {% endcomment %}
+        </tr>
+        {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+    {% endblock content %}
+</body>
+</html>
+
